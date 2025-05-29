@@ -1,12 +1,21 @@
-"use client"
+"use client";
 
-
-import { ArrowRight, Download, ExternalLink, Github, Linkedin, Mail, MapPin, Moon, Sun } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+import {
+  ArrowRight,
+  Download,
+  ExternalLink,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  Moon,
+  Sun,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { useTheme } from "next-themes";
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react";
 import {
   Navbar,
   NavBody,
@@ -18,9 +27,15 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import amazon from "@/public/amazon.png";
 import oce from "@/public/oce.png";
 import advanced from "@/public/advanced.png";
@@ -33,44 +48,46 @@ import tdl from "@/public/tdl.png";
 import mohamed from "@/public/mohamed.jpg";
 
 export default function Portfolio() {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set())
-  const { theme,setTheme } = useTheme();
-  const aboutRef = useRef<HTMLElement>(null)
-  const projectsRef = useRef<HTMLElement>(null)
-  const skillsRef = useRef<HTMLElement>(null)
-  const contactRef = useRef<HTMLElement>(null)
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(
+    new Set()
+  );
+  const { theme, setTheme } = useTheme();
+  const aboutRef = useRef<HTMLElement>(null);
+  const projectsRef = useRef<HTMLElement>(null);
+  const skillsRef = useRef<HTMLElement>(null);
+  const contactRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     // Initial mount animation
     const timer = setTimeout(() => {
-      setIsLoaded(true)
-    }, 100)
+      setIsLoaded(true);
+    }, 100);
 
     // Intersection Observer for scroll animations
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setVisibleSections((prev) => new Set([...prev, entry.target.id]))
+            setVisibleSections((prev) => new Set([...prev, entry.target.id]));
           }
-        })
+        });
       },
-      { threshold: 0.1, rootMargin: "-50px" },
-    )
+      { threshold: 0.1, rootMargin: "-50px" }
+    );
 
-    const refs = [aboutRef, projectsRef, skillsRef, contactRef]
+    const refs = [aboutRef, projectsRef, skillsRef, contactRef];
     refs.forEach((ref) => {
       if (ref.current) {
-        observer.observe(ref.current)
+        observer.observe(ref.current);
       }
-    })
+    });
 
     return () => {
-      clearTimeout(timer)
-      observer.disconnect()
-    }
-  }, [])
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, []);
 
   const projects = [
     {
@@ -155,7 +172,7 @@ export default function Portfolio() {
       live: "https://to-do-list-141y.vercel.app/",
     },
   ];
-  
+
   const skills = [
     "React",
     "Next.js",
@@ -168,15 +185,15 @@ export default function Portfolio() {
     "sass",
     "CSS",
     "HTML",
-  ]
+  ];
   const navItems = [
     { name: "About", link: "#about" },
     { name: "Projects", link: "#projects" },
     { name: "Skills", link: "#skills" },
     { name: "Contact", link: "#contact" },
-  ]
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  
+  ];
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -184,7 +201,7 @@ export default function Portfolio() {
       <Navbar>
         {/* Desktop Navigation */}
         <NavBody>
-          <NavbarLogo/>
+          <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
             <NavbarButton
@@ -217,9 +234,8 @@ export default function Portfolio() {
         {/* Mobile Navigation */}
         <MobileNav>
           <MobileNavHeader>
-            <NavbarLogo/>
-            
-      
+            <NavbarLogo />
+
             <div className="flex items-center ">
               <NavbarButton
                 variant="secondary"
@@ -283,7 +299,7 @@ export default function Portfolio() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              Hi, I'm{" "}
+              Hi, I&apos;m{" "}
               <span className="bg-gradient-to-r from-purple-700 to-blue-500 bg-clip-text text-transparent">
                 Mohamed Hamdy
               </span>
@@ -382,17 +398,17 @@ export default function Portfolio() {
           <div className="grid  gap-8 md:grid-cols-2">
             <div className=" max-sm:px-1 space-y-4 place-content-center">
               <p className="text-muted-foreground">
-                I'm a passionate Front-End Developer with a strong foundation in
-                React.js, Redux Toolkit, Tailwind CSS, and modern JavaScript
-                (ES6+). I’ve built multiple projects including e-commerce
-                platforms, admin dashboards, and interactive UIs that focus on
-                performance, responsiveness, and user experience. I take pride
-                in writing clean, reusable code and turning design concepts into
-                fully functional, accessible web applications.
+                I&apos;m a passionate Front-End Developer with a strong
+                foundation in React.js, Redux Toolkit, Tailwind CSS, and modern
+                JavaScript (ES6+). I&apos;ve built multiple projects including
+                e-commerce platforms, admin dashboards, and interactive UIs that
+                focus on performance, responsiveness, and user experience. I
+                take pride in writing clean, reusable code and turning design
+                concepts into fully functional, accessible web applications.
               </p>
               <p className="text-muted-foreground">
                 Beyond coding, I enjoy solving real-world problems through
-                thoughtful design and intuitive interfaces. I'm constantly
+                thoughtful design and intuitive interfaces. I&apos;m constantly
                 learning new tools and frameworks to sharpen my skills and stay
                 current with modern development practices.
               </p>
@@ -562,7 +578,7 @@ export default function Portfolio() {
               Get In Touch
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Let's work together on your next project
+              Let&apos;s work together on your next project
             </p>
           </div>
           <Card className="hover:shadow-lg transition-all duration-300">

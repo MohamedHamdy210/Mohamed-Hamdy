@@ -474,7 +474,7 @@ export default function Portfolio() {
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
                     {project.title}
-                    <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300  not-lg:opacity-100 ">
                       <Button
                         variant="ghost"
                         size="icon"
